@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
 
 namespace Library
 {
-    public class Node
+    public class Node: INode
     {
-        private int number;
+        private Persona person;
 
         private List<Node> children = new List<Node>();
 
-        public int Number {
+        public Persona Person {
             get
             {
-                return this.number;
+                return this.person;
             }
         }
 
@@ -24,14 +24,19 @@ namespace Library
             }
         }
 
-        public Node(int number)
+        public Node(string name, int edad)
         {
-            this.number = number;
+            Persona person = new Persona(name, edad);
+            this.person = person;
         }
 
         public void AddChildren(Node n)
         {
             this.children.Add(n);
+        }
+
+        public void accept(IVisitor visitor){
+            visitor.Visit(this);
         }
         
     }
