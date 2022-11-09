@@ -35,18 +35,15 @@ namespace Program
             n3.AddChildren(n7);
             n3.AddChildren(n8);
 
-            // visitar el árbol aquí
+            // Creo los visitors y visito el árbol.
             AgeSumVisitor V1 = new AgeSumVisitor();
-            n1.accept(V1);
-            System.Console.WriteLine(V1.sum);
+            System.Console.WriteLine(V1.getAgeSum(n1));
 
             OldestChildrenVisitor V2 = new OldestChildrenVisitor();
-            n1.accept(V2);
-            System.Console.WriteLine(V2.Oldest);
+            System.Console.WriteLine(V2.getOldest(n1));
 
             LongestNameVisitor V3 = new LongestNameVisitor();
-            n1.accept(V3);
-            System.Console.WriteLine(V3.Name);
+            System.Console.WriteLine(V3.getLongestName(n1));
         }
     }
 }

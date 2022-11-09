@@ -2,7 +2,7 @@ namespace Library;
 
 public class OldestChildrenVisitor : IVisitor<Persona>
 {
-    public int Oldest = 0;
+    private int Oldest = 0;
     public void Visit(Node<Persona> node) {
         if (node.Content.Edad > Oldest)
         {
@@ -12,5 +12,10 @@ public class OldestChildrenVisitor : IVisitor<Persona>
         {
             item.accept(this);
         }
+    }
+
+    public int getOldest(Node<Persona> FirstNode) {
+        FirstNode.accept(this);
+        return this.Oldest;
     }
 }

@@ -3,7 +3,7 @@ namespace Library;
 public class LongestNameVisitor : IVisitor<Persona>
 {
     private int Length = 0;
-    public string Name;
+    private string Name;
     public void Visit(Node<Persona> node) {
         if (node.Content.Name.Length > Length)
         {
@@ -14,5 +14,10 @@ public class LongestNameVisitor : IVisitor<Persona>
         {
             item.accept(this);
         }
+    }
+
+    public string getLongestName(Node<Persona> FirstNode) {
+        FirstNode.accept(this);
+        return this.Name;
     }
 }
