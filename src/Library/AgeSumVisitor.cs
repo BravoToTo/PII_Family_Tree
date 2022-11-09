@@ -1,11 +1,11 @@
 namespace Library;
 
-public class AgeSumVisitor<T> : IVisitor<T> where T : Persona 
+public class AgeSumVisitor : IVisitor<Persona> 
 {
     public int sum = 0;
-    public void Visit(Node<T> node) {
+    public void Visit(Node<Persona> node) {
         this.sum += node.Content.Edad;
-        foreach (Node<T> item in node.Children)
+        foreach (Node<Persona> item in node.Children)
         {
             item.accept(this);
         }

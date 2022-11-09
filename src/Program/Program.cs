@@ -36,15 +36,15 @@ namespace Program
             n3.AddChildren(n8);
 
             // visitar el árbol aquí
-            AgeSumVisitor<Persona> V1 = new AgeSumVisitor<Persona>();
+            AgeSumVisitor V1 = new AgeSumVisitor();
             n1.accept(V1);
             System.Console.WriteLine(V1.sum);
 
-            OldestChildrenVisitor<Persona> V2 = new OldestChildrenVisitor<Persona>();
+            OldestChildrenVisitor V2 = new OldestChildrenVisitor();
             n1.accept(V2);
             System.Console.WriteLine(V2.Oldest);
 
-            LongestNameVisitor<Persona> V3 = new LongestNameVisitor<Persona>();
+            LongestNameVisitor V3 = new LongestNameVisitor();
             n1.accept(V3);
             System.Console.WriteLine(V3.Name);
         }
