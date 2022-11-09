@@ -1,14 +1,14 @@
 namespace Library;
 
-public class OldestChildrenVisitor : IVisitor
+public class OldestChildrenVisitor<T> : IVisitor<T> where T : Persona
 {
     public int Oldest = 0;
-    public void Visit(Node node) {
-        if (node.Person.Edad > Oldest)
+    public void Visit(Node<T> node) {
+        if (node.Content.Edad > Oldest)
         {
-            this.Oldest = node.Person.Edad;
+            this.Oldest = node.Content.Edad;
         }
-        foreach (Node item in node.Children)
+        foreach (Node<T> item in node.Children)
         {
             item.accept(this);
         }
