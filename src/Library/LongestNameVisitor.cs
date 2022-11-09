@@ -1,16 +1,16 @@
 namespace Library;
 
-public class LongestNameVisitor : IVisitor
+public class LongestNameVisitor<T> : IVisitor<T> where T : Persona
 {
     private int Length = 0;
     public string Name;
-    public void Visit(Node node) {
-        if (node.Person.Name.Length > Length)
+    public void Visit(Node<T> node) {
+        if (node.Content.Name.Length > Length)
         {
-            this.Length = node.Person.Name.Length;
-            this.Name = node.Person.Name;
+            this.Length = node.Content.Name.Length;
+            this.Name = node.Content.Name;
         }
-        foreach (Node item in node.Children)
+        foreach (Node<T> item in node.Children)
         {
             item.accept(this);
         }

@@ -4,38 +4,37 @@ using System;
 
 namespace Library
 {
-    public class Node: INode
+    public class Node<T>: INode<T>
     {
-        private Persona person;
+        private T content;
 
-        private List<Node> children = new List<Node>();
+        private List<Node<T>> children = new List<Node<T>>();
 
-        public Persona Person {
+        public T Content {
             get
             {
-                return this.person;
+                return this.content;
             }
         }
 
-        public ReadOnlyCollection<Node> Children { 
+        public ReadOnlyCollection<Node<T>> Children { 
             get
             {
                 return this.children.AsReadOnly();
             }
         }
 
-        public Node(string name, int edad)
+        public Node(T t)
         {
-            Persona person = new Persona(name, edad);
-            this.person = person;
+            this.content = t;
         }
 
-        public void AddChildren(Node n)
+        public void AddChildren(Node<T> n)
         {
             this.children.Add(n);
         }
 
-        public void accept(IVisitor visitor){
+        public void accept(IVisitor<T> visitor){
             visitor.Visit(this);
         }
         

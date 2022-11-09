@@ -1,6 +1,6 @@
 namespace Library;
 
-public interface INode
+public interface INode<T>
 {
-    void accept(IVisitor visitor);
+    void accept(IVisitor<T> visitor);
 }
